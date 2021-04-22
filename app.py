@@ -8,9 +8,6 @@ app = Flask("diabetisapp")
 
 model = load_model('dia_model.h5', compile = False)
 
-@app.route("/home")
-def myhome():
-    return render_template("index.html")
 
 @app.route("/form")
 def myform():
@@ -30,8 +27,8 @@ def result():
     output = model.predict([[ int(x1), int(x2), int(x3), int(x4), int(x5), float(x6), float(x7), int(x8) ]])
     final = (round(output[0][0]))
     if final == 1:
-        return render_template("notsafe.html")
+        return render_template("unhealthy.html")
     else:
-        return render_template("safe.html")
+        return render_template("healthy.html")
     return 
 app.run()
