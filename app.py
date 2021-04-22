@@ -8,6 +8,9 @@ app = Flask("diabetisapp")
 
 model = load_model('dia_model.h5', compile = False)
 
+@app.route("/home")
+def myhome():
+    return render_template("index.html")
 
 @app.route("/form")
 def myform():
